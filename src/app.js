@@ -4,6 +4,7 @@ const app = express();
 const createError = require("http-errors");
 
 const rateLimit = require("express-rate-limit");
+const userRouter = require("./routers/usersRouter");
 
 // express rate limiter
 const rateLimiter = rateLimit({
@@ -18,17 +19,11 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/users", userRouter);
 // get
 app.get("/products", (req, res) => {
   res.status(200).json({
     message: "Data get successfuly",
-  });
-});
-// user data get
-app.get("/api/users", (req, res) => {
-  console.log(req.body.id);
-  res.status(200).json({
-    message: "User data returned successfuly",
   });
 });
 

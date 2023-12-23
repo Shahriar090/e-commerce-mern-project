@@ -6,7 +6,6 @@ const getUser = (req, res, next) => {
     console.log(req.body.id);
     res.status(200).json({
       message: "User data returned successfuly",
-      users: users,
     });
   } catch (error) {
     next(error);
